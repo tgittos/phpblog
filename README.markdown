@@ -46,4 +46,4 @@ Installation
 Notes
 =====
 
-Don't use this application: use [http://www.wordpress.org](Wordpress) instead.
+Don't use this application: use [Wordpress](http://www.wordpress.org) instead.
