@@ -1,0 +1,9 @@
+---
+CategoryPost:
+    columns:
+        category_id:
+            type: integer
+            primary: true
+        post_id:
+            type: integer
+            primary: true

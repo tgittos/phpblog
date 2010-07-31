@@ -1,0 +1,14 @@
+<?php
+
+/**
+* Interface to define data stores
+*/
+
+interface IDataStore
+{
+    function connect();
+    function query($query);
+    function disconnect();
+}
+
+?>

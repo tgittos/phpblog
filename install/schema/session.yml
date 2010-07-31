@@ -1,0 +1,11 @@
+---
+Session:
+    columns:
+        id: 
+            primary: true
+            type: string(32)
+        access: int(10)
+        data: string
+    indexes:
+        sessionindex:
+            fields: [id]

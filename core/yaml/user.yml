@@ -1,0 +1,15 @@
+---
+User:
+    columns:
+        username: string(50)
+        password: string(50)
+        email: string(255)
+        firstname: string(50)
+    indexes:
+        userindex:
+            fields: [username, password]
+    relations:
+        Role:
+            refClass: RoleUser
+            local: user_id
+            foreign: group_id

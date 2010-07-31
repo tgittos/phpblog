@@ -1,0 +1,9 @@
+---
+RoleUser:
+    columns:
+        role_id:
+            type: integer
+            primary: true
+        user_id:
+            type: integer
+            primary: true

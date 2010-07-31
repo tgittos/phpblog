@@ -1,0 +1,26 @@
+---
+Post:
+    columns:
+        title: 
+            type: string(200)
+            notnull: true
+        content: 
+            type: string
+            notnull: true
+        user_id: 
+            type: int
+            notnull: true
+        date: 
+            type: date
+            notnull: true
+    indexes:
+        postindex:
+            fields: [title, user_id]
+    relations:
+        User:
+            local: user_id
+            foreign: id
+        Category:
+            refClass: CategoryPost
+            local: post_id
+            foreign: category_id

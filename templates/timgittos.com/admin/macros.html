@@ -1,0 +1,211 @@
+<!-- LOGIN -->
+<div id="login" metal:define-macro="login">
+	<form name="login" action="form action" method="post" tal:attributes="action action">
+		<fieldset>
+			<label for="username">Username:</label><input name="username" type="text"></input><br />
+			<label for="password">Password:</label><input name="password" type="password"></input><br />
+			<input type="submit" name="submit" value="Login" id="submit" class="button"></input>
+		</fieldset>
+	</form>
+	<span tal:condition="exists: feedback" tal:content="feedback" />
+</div>
+<!-- END LOGIN -->
+
+<!-- POSTS -->
+<div metal:define-macro="posts">
+	<h1>New Post</h1>
+	<div class="panel">
+		<div metal:use-macro="postscreate" />
+	</div>
+	<h1>Current Posts</h1>
+	<div class="panel">
+		<div metal:use-macro="postslist" />
+	</div>
+</div>
+
+<div id="posts-create" metal:define-macro="postscreate">
+	<p tal:condition="exists: feedback" tal:content="feedback">feedback message</p>
+	<form name="createPost" action="" method="post" tal:attributes="action action | default">
+		<fieldset>
+			<label for="title">Title:</label><input name="title" type="text" value="" tal:attributes="value post/title | default"></input><br />
+			<label for="url">Url:</label><input name="url" type="text" value="" tal:attributes="value post/url | default"></input><br />
+			<label for="content">Content:</label><br />
+			<textarea name="content" cols="60" row="20" tal:content="post/content | default"></textarea><br />
+			<select name="categories[]" multiple="multiple" tal:condition="exists: categories">
+				<option value="value"
+				tal:repeat="cat categories"
+				tal:attributes="value cat/id; selected cat/selected"
+				tal:content="cat/name">Text</option>
+			</select><br />
+			<input type="submit" name="submit" value="Create" class="button"></input>
+		</fieldset>
+	</form>
+</div>
+
+<div id="posts-list" metal:define-macro="postslist" >
+	<table>
+		<th>Title</th>
+		<th>Edit</th>
+		<th>Delete</th>
+
+		<tr tal:repeat="post posts">
+			<td tal:content="post/title" />
+			<td>
+				<form action="form action" method="post" tal:attributes="action string: ${url}/post/edit/${post/id}">
+					<input type="submit" name="delete" value="Edit" class="button"/>
+				</form>
+			</td>
+			<td>
+				<form action="form action" method="post" tal:attributes="action string: ${url}/post/delete/${post/id}">
+					<input type="submit" name="delete" value="Delete" class="button"/>
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+<!-- END POSTS -->
+
+<!-- USERS -->
+<div id="users" metal:define-macro="users">
+	<h1>Add User</h1>
+	<div class="panel">
+		<div metal:use-macro="userscreate" />
+	</div>
+	<h1>List Users</h1>
+	<div class="panel">
+		<div metal:use-macro="userslist" />
+	</div>
+</div>
+
+<div id="users-list" metal:define-macro="userslist">
+	<table>
+		<th>Username</th>
+		<th>Edit</th>
+		<th>Delete</th>
+
+		<tr tal:repeat="user users">
+			<td tal:content="user/username" />
+			<td>
+				<form action="form action" method="post" tal:attributes="action string: ${url}/user/edit/${user/id}">
+					<input type="submit" value="Edit" class="button"/>
+				</form>
+			</td>
+			<td>
+				<form action="form action" method="post" tal:attributes="action string: ${url}/user/delete/${user/id}">
+					<input type="submit" value="Delete" class="button"/>
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="users-create" metal:define-macro="userscreate">
+	<form action="${ROOT_URL}/admin/user/add" method="post">
+		<fieldset>
+			<p><label for="username">Username</label>
+			<input type="text" name="username" id="username" /><br />
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" /><br />
+			<label for="password-check">Retype</label>
+			<input type="password" name="password-check" id="password-check" /></p>
+			<p><label for="name">Real name</label>
+			<input type="text" name="name" id="name" /><br />
+			<label for="email">Email</label>
+			<input type="text" name="email" id="email" /><br />
+			<input type="submit" value="Save" class="button" /></p>			
+		</fieldset>
+	</form>
+</div>
+<!-- END USERS -->
+
+<!-- CATEGORIES -->
+<div id="categories" metal:define-macro="categories">
+	<h1>Create Category</h1>
+	<div class="panel">
+		<div metal:use-macro="categorycreate" />
+	</div>
+	<h1>List Category</h1>
+	<div class="panel">
+		<div metal:use-macro="categorylist" />
+	</div>
+</div>
+
+<div id="category-create" metal:define-macro="categorycreate">
+	<p tal:content="feedback" tal:condition="exists: feedback">feedback message</p>
+	<form name="createCategory" action="${ROOT_URL}/admin/category/add" method="post">
+		<fieldset>
+			<label for="name">Name:</label><input name="name" type="text"></input><br />
+			<input type="submit" name="submit" value="Create"></input>
+		</fieldset>
+	</form>
+</div>
+
+<div id="category-list" metal:define-macro="categorylist">
+	<table tal:condition="exists: categories">
+		<th>Category</th>
+		<th>Edit</th>
+		<th>Delete</th>
+		<tr tal:repeat="category categories">
+			<td tal:content="category/name" />
+			<td>
+				<form action="category/edit/${category/id}" method="post">
+					<input type="submit" name="edit" value="Edit" class="button" />
+				</form>
+			</td>
+			<td>
+				<form action="category/delete/${category/id}" method="post">
+					<input type="submit" name="delete" value="Delete" class="button" />
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+<!-- END CATEGORIES -->
+
+<!-- COMMENTS -->
+<div id="comments" metal:define-macro="comments">
+	<h1>Comments for Review</h1>
+	<div class="panel">
+		<div metal:use-macro="commentslist" />
+	</div>
+</div>
+
+<div id="comments-list" metal:define-macro="commentslist" tal:condition="exists: comments">
+	<div class="comment" tal:condition="exists: comments" tal:repeat="comment comments">
+		<span class="comment-date" tal:content="date: comment/timestamp" />
+		<span class="comment-name" tal:content="comment/name" /><br />
+		<span tal:replace="comment/content" />
+		<p>
+			<form action="form action" method="post" tal:attributes="action string:${url}/comment/approve/${comment/id}">
+				<input type="submit" value="Approve" class="button" />
+			</form>
+			<form action="form action" method="post" tal:attributes="action string:${url}/comment/delete/${comment/id}">
+				<input type="submit" value="Delete" class="button" />
+			</form>
+		</p>
+	</div>
+	<div tal:condition="not: hasComments">
+		<p>No new comments.</p>
+	</div>
+</div>
+<!-- END COMMENTS -->
+
+<!-- DASHBOARD -->
+<div id="dashboard" metal:define-macro="dashboard">
+	<h1>Right now...</h1>
+	<div class="panel">
+		<p>You have ${postsNo} posts, with ${commentsNo} comments in ${categoriesNo} categories.<br />
+		You are using version ${VERSION} of Blog, with 0 plugins installed.</p>
+	</div>
+	<h2>New Comments</h2>
+	<div class="panel">
+		<div id="comments">
+			<div metal:use-macro="commentslist" />
+		</div>
+	</div>
+	<h2>Quickpost</h2>
+	<div class="panel">
+		<div tal:omit-tag="" metal:use-macro="postscreate" />
+	</div>
+</div>
+<!-- END DASHBOARD -->

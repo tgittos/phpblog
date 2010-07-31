@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -5em;
+}
+#footer, .push {
+	height: 5em;
+}
+#footer #quicklinks
+{
+	width: 30em;
+}
+#header
+{
+	height: 6em;
+}
+#header #main-menu
+{
+	width: 60em;
+	margin: auto;
+}
+#header #main-menu ul li
+{
+	width: 7em;
+	text-align: center;
+}
+
+.panel
+{
+	border: solid 1px;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	padding: .5em;
+}
+
+.comment
+{
+	overflow: auto;
+}
+.comment .button
+{
+	float: left;
+	width: 5em !important;
+}
+
+h1, h2, h3, h4, h5
+{
+	margin-top: .375em;
+	margin-bottom: .75em;
+}

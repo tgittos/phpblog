@@ -1,0 +1,13 @@
+<?php
+
+/**
+* Interface definition for role to post blog posts
+*/
+
+interface IPoster
+{
+    function username();
+    function id();
+}
+
+?>

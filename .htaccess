@@ -1,0 +1,15 @@
+RewriteEngine on
+
+#Match on .php files first
+RewriteCond %{REQUEST_FILENAME}.php -f 
+RewriteRule ^(.+)/?$ $1.php
+
+RewriteRule ^admin/?$ index.php?mode=admin&class=dashboard [L]
+RewriteRule ^admin/([^/]+)/?$ index.php?mode=admin&class=$1 [L]
+RewriteRule ^admin/([^/]+)/([^/]+)/?$ index.php?mode=admin&class=$1&action=$2 [L]
+RewriteRule ^admin/([^/]+)/([^/]+)/([^/]+)/?$ index.php?mode=admin&class=$1&action=$2&id=$3 [L]
+
+RewriteRule ^$ index.php?mode=public&class=start [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([A-Za-z]+)/?$ index.php?mode=public&class=$1 [L]
+RewriteRule ^([A-Za-z]+)/([A-Za-z0-9-]+)/?$ index.php?mode=public&class=$1&id=$2 [L]

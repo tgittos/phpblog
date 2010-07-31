@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>Web developer, and all-round geek - The not-so-many facets of Tim Gittos</title>
+		<meta name="title" content="Web developer and all-round geek - The not-so-many facets of Tim Gittos" />
+		<meta name="description" content="The personal blog of Tim Gittos, Australian web developer and geek." />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<base href="${ROOT_URL}/" />
+		<link href="timgittos.css" type="text/css" rel="stylesheet" tal:attributes="href template/blog/css/main"/>
+	</head>
+	<body>
+		<div id="header">
+			<h1>Hi, my name is Tim</h1>
+			<h2>... and I'm a geek</h2>
+			<div id="main-menu">
+				<ul>
+					<li><a href="home" title="home title" tal:attributes="href menu/home/url; title menu/home/title">Latest posts</a></li>
+					<li><a href="archive" title="Past posts">Past posts</a></li>
+					<li><a href="#" title="Life feed">Life feed</a></li>
+					<li><a href="#" title="Contact me">Contact me</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<div metal:use-macro="${content}" />
+			<div id="search">
+				<h1>Search</h1>
+				<form action="${ROOT_URL}/search/" method="post">
+					<div>
+						<input type="text" name="query" class="search-box" alt="Search text input box" />
+						<input type="submit" value="Search" class="search-button" alt="Search submit button" />
+					</div>
+				</form>
+			</div>
+			<div id="life-feed">
+				<h1>Life feed</h1>
+				<div class="feed">
+					<div class="entry">
+						<p><span class="title">@timgittos.com</span> dummy placeholder for design purposes</p>					
+					</div>
+					<div class="entry alt">
+						<p><span class="title">@timgittos.com</span> dummy placeholder for design purposes</p>					
+					</div>
+					<div class="entry">
+						<p><span class="title">@timgittos.com</span> dummy placeholder for design purposes</p>					
+					</div>
+				</div>
+				<div class="feed">
+					<div class="entry">
+						<p><span class="title">@timgittos.com</span> another dummy placeholder for design purposes</p>					
+					</div>
+					<div class="entry alt">
+						<p><span class="title">@timgittos.com</span> another dummy placeholder for design purposes</p>					
+					</div>
+					<div class="entry">
+						<p><span class="title">@timgittos.com</span> another dummy placeholder for design purposes</p>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<p id="quicklinks">
+				<a href="index.html" title="Latest posts">Latest posts</a> | 
+				<a href="#" title="Past posts">Past posts</a> | 
+				<a href="#" title="Life feed">Life feed</a> | 
+				<a href="#" title="Contact me">Contact me</a>
+			</p>
+		</div>
+	</body>
+</html>

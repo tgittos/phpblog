@@ -1,0 +1,89 @@
+<div id="posts" metal:define-macro="top5">
+	<div class="post" tal:repeat="post posts">
+		<a href="full post url" tal:attributes="href string: full/${post/url}" class="header-link"><h1 tal:content="post/title" /></a>
+		<p class="date" tal:content="date: post/date" />
+		<p tal:replace="structure post/description" />...
+		<p>Posted 
+			<span tal:condition="post/hasAuthor">by ${post/User/username}</span> 
+			<span tal:condition="php: true">in <span tal:replace="post/categoryString" /></span>
+		</p>
+		<p>${post/comments} comments | <a href="more link" class="more" tal:attributes="href string: full/${post/url}">Read more</a> </p>
+	</div>
+</div>
+
+<div id="post" metal:define-macro="post">
+	<h1 tal:content="post/title" />
+	<p class="date" tal:content="date: post/date" />
+	<div tal:replace="structure post/content" />
+	<h2>Comments</h2>
+	<div id="comments">
+		<p class="comment" tal:repeat="comment comments" tal:condition="exists: comments">
+			<span class="comment-date" tal:content="date: comment/timestamp" />
+			<span class="comment-name" tal:content="comment/name" /><br />
+			<span tal:replace="comment/content" />
+		</p>
+		<form method="post" action="${ROOT_URL}/docomment/${post/url}">
+			<fieldset>
+				<label for="name">Name:</label>
+				<input type="text" name="name" /><br />
+				<label for="email">Email:</label>
+				<input type="text" name="email" /><br />
+				<label for="content">Comment:</label>
+				<textarea cols="50" rows="10" name="content"></textarea><br />
+				<input type="submit" name="submit" value="Submit" class="submit" />
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+<div metal:define-macro="index">
+	<div id="intro">
+		<p>Yes, I admit it. I'm a software engineer by training, and a web developer by day. I guess you could say it's in my blood. I maintain a lot of <a href="#" title="A list of all the websites I own">websites</a>, separated into my different interests and ventures. You could probably call this my hub, a place where everything comes together, and where I'm just me.</p>
+		<p>As a result, you'll find my personal thoughts here, as well as an aggregation of my online life. I guess if you were to stalk me, this would be the perfect place to start. This is my own little corner of the internet, and while this isn't written for you, you can stay if you'd like.</p>
+	</div>
+	<div metal:use-macro="top5" tal:condition="exists: posts"/>
+</div>
+
+<div id="post" metal:define-macro="searchnotfound">
+	<div id="results">
+		<h1>Search Results</h1>
+		<p>Sorry, no results found for search term ${query}</p>
+		<p class="search-permalink">Search permalink: <a href="permalink" tal:attributes="href string:${ROOT_URL}/search/${query}">here</a></p>
+	</div>
+</div>
+
+<div id="post" metal:define-macro="searchfound">
+	<div id="results">
+		<h1>Search Results</h1>
+		<p>Found ${results/count} results for the search term ${query}</p>
+		<ul>
+			<li  tal:repeat="post results">
+				<p class="result-link"><a href="result link" tal:attributes="href string:${ROOT_URL}/full/${post/url}" tal:content="post/title" /></p>
+				<span tal:replace="structure post/description" />
+			</li>
+		</ul>
+		<p class="search-permalink">Search permalink: <a href="permalink" tal:attributes="href string:${ROOT_URL}/search/${query}">here</a></p>
+	</div>
+</div>
+
+<div id="categorylist" metal:define-macro="categorylist">
+	<div id="categories">
+		<h1>Posts By Category</h1>
+		<ul>
+			<li tal:repeat="cat categories">
+				<p class="cat-link"><a href="cat link" tal:attributes="href string:${ROOT_URL}/archive/${cat/url}">${cat/name}</a></p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id="categoryposts" metal:define-macro="categoryposts">
+	<div id="posts">
+		<h1>Posts tagged with &ldquo;${cat}&rdquo;</h1>
+		<p class="post" tal:repeat="post posts">
+			<a href="full post url" tal:attributes="href string: full/${post/url}" class="header-link"><span class="posttitle" tal:content="post/title" /></a> posted on <em tal:content="date: post/date" /><br />
+			<span tal:replace="structure post/description" /><br />
+			<span><a href="more link" class="more" tal:attributes="href string: full/${post/url}">Read article</a></span>
+		</p>
+	</div>
+</div>

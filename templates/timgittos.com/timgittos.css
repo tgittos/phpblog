@@ -1,0 +1,261 @@
+/* Selective reset */
+body, div, p, ul, ol, li, a, blockquote, span, h1, h2, h3, h4, h5
+{
+	margin: 0;
+	border: 0;
+}
+
+/* Global, built in properties */
+body
+{
+	font-size: 62.5%;
+	font-family: Helvetica, Verdana, sans-serif;
+	word-spacing: 0.075em;
+	line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5
+{
+	font-family: Georgia, "Times New Roman", serif;
+	word-spacing: -0.075em;
+	line-height: 1.05;
+}
+
+h1
+{
+	/*24px*/
+	font-size: 2.4em;
+}
+
+h2
+{
+	/*20px*/
+	font-size: 2.0em;
+}
+
+h3
+{
+	/*18px*/
+	font-size: 1.8em;
+}
+
+
+
+p
+{
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+fieldset
+{
+    border: none;
+    width: 25em;
+    margin: auto;
+}
+
+label
+{
+    display: block;
+    width: 8em;
+    float: left;
+    line-height: 2.5em;
+}
+
+input
+{
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+}
+
+/* Global, custom properties */
+.alt
+{
+	background: #dadada;
+}
+
+/* Site section specific */
+#header
+{
+	width: 100%;
+	height: 13em;
+	background: #000;
+	color: #fff;
+	padding-top: 2em;
+}
+#header h1, #header h2
+{
+	width: 15em;
+	margin-left: auto;
+	margin-right: auto;
+}
+#header h2
+{
+	width: 10em;
+}
+#header #main-menu
+{
+	width: 35em;
+	margin: auto;
+	font-size: 1.5em;
+	line-height: 3em;
+	margin-top: 2.5em;
+}
+#header #main-menu a, #footer a
+{
+	color: #dadada;	
+	text-decoration: none;
+}
+#header #main-menu a:hover, #footer a:hover
+{
+	color: #fff;
+}
+#header #main-menu a:visited, #footer a:visited
+{
+	color: #b9b9b9;
+}
+#header #main-menu ul li
+{
+	width: 8em;
+	float: left;
+	list-style-type: none;
+}
+
+#footer
+{
+	width: 100%;
+	height: 5em;
+	background: #000;
+	color: #fff;
+	clear: both;
+}
+#footer #quicklinks
+{
+	width: 24em;
+	margin: auto;
+	line-height: 5em;
+}
+
+#content
+{
+	font-size: 1.2em;
+	width: 52em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1.2em;
+}
+
+#intro
+{
+	width: 100%;
+}
+#intro p
+{
+	width: 100%;
+}
+
+#posts, #post, #categories
+{
+	width: 32em;
+	float: left;
+	margin-right: 1em;
+}
+#posts a.header-link, #posts a.header-link :visited, #posts a.header-link :hover, #posts a.header-link :active
+{
+	text-decoration: underline;
+	color: #000;
+}
+
+#posts .post blockquote, #post blockquote
+{
+	float: right;
+	margin: 1em;
+	color: #565656;
+	width: 16em;
+}
+#posts .post ul, #posts .post ol, #post ul, #post ol
+{
+	margin-top: -1em;
+	margin-bottom: -1em;
+}
+#posts .post .date, #post .date
+{
+	margin-left: 2em;
+	font-style: italic;
+}
+
+#post h2
+{
+	margin-top: 1.2em;
+	margin-bottom: 1.2em;
+}
+
+#life-feed, #search
+{
+	width: 18em;
+	float: left;
+	margin-left: 1em;
+}
+#life-feed .feed
+{
+	border-color: #000;
+	border-style: dotted;
+	border-top-width: 0.2em;
+	border-bottom-width: 0.2em;
+}
+#life-feed .feed + .feed
+{
+	border-top-width: 0;
+}
+#life-feed .feed .entry .title
+{
+	font-weight: bold;
+}
+
+#search
+{
+	margin-bottom: 1em;
+}
+#search .search-box
+{
+	width: 10em;
+}
+#search .search-button
+{
+	width: 5em;
+}
+
+#comments fieldset
+{
+	margin-top: 2.4em;
+}
+#comments input 
+{
+	width: 20.3em;
+}
+#comments input.submit
+{
+    width: 5em;
+    float: right;
+}
+#comments p
+{
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+#comments .comment-date, #comments .comment-name
+{
+	font-weight: bold;
+	display: block;
+	float: left;
+	background: #dadada;
+	margin-bottom: 0.6em;
+}
+#comments .comment-date
+{
+	width: 30%;
+}
+#comments .comment-name
+{
+	width: 70%;
+}

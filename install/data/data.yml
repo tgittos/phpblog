@@ -1,0 +1,25 @@
+---
+Role:
+    admin:
+        name: Administrator
+        isAdmin: true
+        isModerator: true
+        isPoster: true
+    mod:
+        name: Moderator
+        isAdmin: false
+        isModerator: true
+        isPoster: true
+    poster:
+        name: Poster
+        isAdmin: false
+        isModerator: false
+        isPoster: true
+
+User:
+    adminUser:
+        username: admin
+        password: 74dfc2b27acfa364da55f93a5caee29ccad3557247eda238831b3e9bd931b01d77fe994e4f12b9d4cfa92a124461d2065197d8cf7f33fc88566da2db2a4d6eae 
+        email: admin@example.com
+        firstname: Administrator
+        Roles: [admin]

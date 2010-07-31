@@ -1,0 +1,40 @@
+<?php
+
+/**
+* Blog engine, core class
+*/
+
+class Blog
+{
+    // Database connection
+    private $db = null;
+    
+    /**
+    * Constructor takes a data store. Doesn't matter what it is,
+    * as long as it implements the IDataStore interface.
+    */
+    public function __construct($ds)
+    {
+        if (!$ds instanceof IDataStore)
+            throw new Exception("Expected IDataStore, got " . getclass($ds));
+        $this->db = $ds;
+    }
+    
+    /**
+    * Creates a new post
+    */
+    public function createPost($post)
+    {
+        $sql = 
+    }
+    
+    /**
+    * Displays the top n posts in the database
+    */
+    public function displayTop($n)
+    {
+        throw new Exception("Not implemented yet");
+    }
+}
+
+?>

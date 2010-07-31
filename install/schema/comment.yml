@@ -1,0 +1,30 @@
+---
+Comment:
+    columns:
+        user_id: integer
+        parent_id: 
+            type: integer
+            notnull: true
+        parenttype:
+            type: enum
+            values: [post, comment]
+            notnull: true
+        timestamp: 
+            type: timestamp
+            notnull: true
+        name: 
+            type: string(50)
+            notnull: true
+        email: 
+            type: string(255)
+            notnull: true
+        content: 
+            type: string
+            notnull: true
+        checked:
+            type: boolean
+            notnull: true
+    relations:
+        User:
+            local: user_id
+            foreign: id

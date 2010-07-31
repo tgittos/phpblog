@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title tal:condition="exists: title" tal:content="string: ${title} - Blog Admin">Blog Administration Panel</title>
+		<meta name="robots" content="nofollow, noindex" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<base href="${ROOT_URL}/admin/" />
+		<link href="../timgittos.css" type="text/css" rel="stylesheet" tal:attributes="href template/blog/css/main"/>
+		<link href="admin.css" type="text/css" rel="stylesheet" tal:attributes="href template/blog/css/admin"/>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div id="header">
+				<div id="main-menu">
+					<ul>
+						<li><a href="${ROOT_URL}/admin/dashboard" title="Dashboard">Dashboard</a></li>
+						<li><a href="${ROOT_URL}/admin/post/list" title="Administrate Posts">Posts</a></li>
+						<li><a href="${ROOT_URL}/admin/comment/list" title="Administrate Comments">Comments</a></li>
+						<li><a href="${ROOT_URL}/admin/category/list" title="Administrate Categories">Categories</a></li>
+						<li>Blog Roll</li>
+						<li><a href="${ROOT_URL}/admin/user/list" title="Administrate Users">Users</a></li>
+						<li><a href="${ROOT_URL}/admin/settings/list" title="Change Settings">Settings</a></li>
+						<li><a href="${ROOT_URL}/admin/logout" title="Logout">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<tal:block condition="exists: content">
+					<div metal:use-macro="${content}" tal:omit-tag=""/>
+				</tal:block>		
+			</div>
+			<div class="push"></div>
+		</div>
+		<div id="footer">
+			<p id="quicklinks">
+				<a href="${ROOT_URL}/admin/dashboard" title="Dashboard">Dashboard</a> | 
+				<a href="${ROOT_URL}/admin/post/list" title="Administrate Posts">Posts</a> | 
+				<a href="${ROOT_URL}/admin/comment/list" title="Administrate Comments">Comments</a> | 
+				<a href="${ROOT_URL}/admin/category/list" title="Administrate Categories">Categories</a> |
+				<a href="${ROOT_URL}/admin/user/list" title="Administrate Users">Users</a> |
+				<a href="${ROOT_URL}/admin/logout" title="Logout">Logout</a>
+			</p>
+		</div>
+	</body>
+</html>

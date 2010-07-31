@@ -1,0 +1,7 @@
+---
+Role:
+    columns:
+        name: string(20)
+        isAdmin: boolean
+        isModerator: boolean
+        isPoster: boolean

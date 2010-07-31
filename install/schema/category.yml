@@ -1,0 +1,4 @@
+---
+Category:
+    columns:
+        name: string(30)
